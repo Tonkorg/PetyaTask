@@ -1,4 +1,4 @@
-package ru.tyaga.PetyaTask;
+package ru.tyaga.petya_task;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

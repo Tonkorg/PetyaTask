@@ -1,4 +1,4 @@
-package ru.tyaga.PetyaTask;
+package ru.tyaga.petya_task;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
