@@ -4,7 +4,7 @@ import ru.tyaga.petya_task.domain.Person;
 
 import java.util.List;
 
-public interface PeopleSer {
+public interface PersonSer {
 
     List<Person> getAllPerson();
 
