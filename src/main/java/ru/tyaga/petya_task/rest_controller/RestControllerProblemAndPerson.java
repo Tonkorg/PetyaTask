@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.tyaga.petya_task.domain.Person;
 import ru.tyaga.petya_task.domain.Problem;
 import ru.tyaga.petya_task.service.class_for_service.PersonService;
@@ -16,7 +13,9 @@ import ru.tyaga.petya_task.service.class_for_service.ProblemService;
 
 
 import java.time.LocalDate;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -48,6 +47,26 @@ public class RestControllerProblemAndPerson {
             return ResponseEntity.ok("Data processed successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing data: " + e.getMessage());
+        }
+    }
+
+
+    @GetMapping("/getFull/person/{personId}")
+    public ResponseEntity<?> getFullPersonInfo(@PathVariable Long personId) {
+        try {
+            // Получаем информацию о человеке и его проблемах из сервисов
+            Person person = personService.getPersonById(personId);
+            List<Problem> problems = problemService.getAllProblemByPersonId(personId);
+
+            // Создаем объект, содержащий всю информацию
+            Map<String, Object> fullInfo = new HashMap<>();
+            fullInfo.put("person", person);
+            fullInfo.put("problems", problems);
+
+            // Возвращаем объект в формате JSON
+            return ResponseEntity.ok(fullInfo);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error retrieving data: " + e.getMessage());
         }
     }
 }
