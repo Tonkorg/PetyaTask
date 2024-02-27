@@ -12,29 +12,34 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ProblemService implements ProblemSer {
+
+    private ProblemRep problemRep;
+
     @Override
     public List<Problem> getAllProblem() {
-        return null;
+        return problemRep.findAll();
     }
 
     @Override
     public Problem getProblemById(Long id) {
-        return null;
+        return problemRep.getProblemById(id);
     }
 
     @Override
     public Problem updateProblem(Problem problem) {
-        return null;
+        return problemRep.save(problem);
     }
 
     @Override
     public String deleteProblemById(Long id) {
-        return null;
+         problemRep.deleteById(id);
+         return "success";
     }
 
     @Override
     public void addNewProblem(Problem problem) {
 
+        problemRep.save(problem);
     }
 }
 

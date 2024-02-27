@@ -5,7 +5,9 @@ import ru.tyaga.petya_task.domain.Problem;
 
 public interface ProblemRep extends JpaRepository<Problem,Integer> {
 
-    void deleteByMail(String mail);
+    Problem getProblemById(Long id);
 
-     Problem findByMail(String mail);
+    void deleteById(Long id);
+
+
 }
