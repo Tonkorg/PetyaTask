@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+
 public class PersonService implements PersonSer {
 
      private PersonRep personRep;

@@ -3,6 +3,7 @@ package ru.tyaga.petya_task.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Person {
 
     @OneToMany(mappedBy="personId")
