@@ -43,8 +43,11 @@ public class ProblemService implements ProblemSer {
     }
 
     @Override
-    public List<Problem> getAllProblemFromPersonId(Long id) {
-        return problemRep.findAllById(id);
+    public List<Problem> getAllProblemByPersonId(Long personId) {
+
+        return problemRep.getAllByPersonId(personId);
     }
+
+
 }
 

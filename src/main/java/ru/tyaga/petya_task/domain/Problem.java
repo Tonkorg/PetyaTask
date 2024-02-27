@@ -12,10 +12,10 @@ public class Problem {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer problem_id;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="person_id")
     private Person person;
 
     private Long personId;

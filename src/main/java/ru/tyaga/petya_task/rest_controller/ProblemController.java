@@ -17,31 +17,36 @@ public class ProblemController {
 
 
 
-//    @GetMapping("/getProblems")
-//     public List<Problem> findAll()
-//    {
-//        return  problemService.getAllProblem();
-//    }
-//
-////    @PostMapping("/addProblem")
-////    public String addNewProblem(@RequestBody Problem problem) {
-////        problemService.addNewProblem(problem);
-////        return "Success";
-////    }
-//
-//
-//
-//
-//    @PutMapping("/updateProblem")
-//    public Problem updateProblem(@RequestBody Problem problem) {
-//
-//        return problemService.updateProblem(problem);
-//    }
-//
-//    @GetMapping("/getProblem/{id}")
-//    public Problem findProblem(@PathVariable Long id) {
-//
-//        return  problemService.getProblemById(id);
-//    }
-//
+    @GetMapping("/getProblems")
+     public List<Problem> findAll()
+    {
+        return  problemService.getAllProblem();
+    }
+
+    @PostMapping("/addProblem")
+    public String addNewProblem(@RequestBody Problem problem) {
+        problemService.addNewProblem(problem);
+        return "Success";
+    }
+
+    @PutMapping("/updateProblem")
+    public Problem updateProblem(@RequestBody Problem problem) {
+
+        return problemService.updateProblem(problem);
+    }
+
+
+    @GetMapping("/getProblem/{id}")
+    public Problem findProblem(@PathVariable Long id) {
+
+        return  problemService.getProblemById(id);
+    }
+
+    @GetMapping("/getProblemForPerson/{personId}")
+    List<Problem> getAllProblemByPersonId(@PathVariable Long personId)
+    {
+        return problemService.getAllProblemByPersonId(personId);
+    }
+
+
 }

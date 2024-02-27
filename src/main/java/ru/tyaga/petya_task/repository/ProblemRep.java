@@ -12,5 +12,5 @@ public interface ProblemRep extends JpaRepository<Problem,Integer> {
     void deleteById(Long id);
 
 
-    List<Problem> findAllById(Long id);
+    List<Problem> getAllByPersonId(Long personId);
 }
