@@ -1,36 +1,35 @@
 package ru.tyaga.petya_task.rest_controller;
 
-//import lombok.AllArgsConstructor;
-//import org.springframework.web.bind.annotation.*;
-//import ru.tyaga.petya_task.domain.Problem;
-//import ru.tyaga.petya_task.service.class_for_service.ProblemService;
-//
-//import java.util.List;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import ru.tyaga.petya_task.domain.Problem;
+import ru.tyaga.petya_task.service.class_for_service.PersonService;
+import ru.tyaga.petya_task.service.class_for_service.ProblemService;
 
-//@RestController
-//@AllArgsConstructor
-//@RequestMapping("/api/v1")
-//public class ProblemController {
-//
-//    private ProblemService problemService;
-//
-//
+import java.util.List;
+
+@RestController
+@AllArgsConstructor
+@RequestMapping("/api/v1/problem")
+public class ProblemController {
+
+    private ProblemService problemService;
+
+
+
 //    @GetMapping("/getProblems")
 //     public List<Problem> findAll()
 //    {
-//        return  problemService.findAll();
+//        return  problemService.getAllProblem();
 //    }
 //
-//    @PostMapping("/addProblem")
-//    public String addNewProblem(@RequestBody Problem problem) {
-//        problemService.addNewProblem(problem);
-//        return "Success";
-//    }
+////    @PostMapping("/addProblem")
+////    public String addNewProblem(@RequestBody Problem problem) {
+////        problemService.addNewProblem(problem);
+////        return "Success";
+////    }
 //
-//    @DeleteMapping("/deleteProblem/{mail}")
-//    public String deleteProblem(@PathVariable String mail) {
-//        return problemService.deleteProblem(mail);
-//    }
+//
 //
 //
 //    @PutMapping("/updateProblem")
@@ -39,10 +38,10 @@ package ru.tyaga.petya_task.rest_controller;
 //        return problemService.updateProblem(problem);
 //    }
 //
-//    @GetMapping("/getProblem/{mail}")
-//    public Problem findProblem(@PathVariable String mail) {
+//    @GetMapping("/getProblem/{id}")
+//    public Problem findProblem(@PathVariable Long id) {
 //
-//        return  problemService.findProblem(mail);
+//        return  problemService.getProblemById(id);
 //    }
 //
-//}
+}

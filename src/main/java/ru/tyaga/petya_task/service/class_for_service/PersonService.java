@@ -36,4 +36,11 @@ public class PersonService implements PersonSer {
 
         personRep.deletePersonByMail(mail);
     }
+
+    @Override
+    public Person getPersonById(Long id) {
+        return personRep.getPersonById(id);
+    }
+
+
 }

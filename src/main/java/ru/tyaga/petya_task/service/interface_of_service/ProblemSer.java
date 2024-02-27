@@ -16,4 +16,6 @@ public interface ProblemSer {
 
    void addNewProblem(Problem problem);
 
+   List<Problem> getAllProblemFromPersonId(Long id);
+
 }

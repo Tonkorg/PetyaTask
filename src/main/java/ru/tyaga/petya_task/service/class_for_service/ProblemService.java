@@ -41,5 +41,10 @@ public class ProblemService implements ProblemSer {
 
         problemRep.save(problem);
     }
+
+    @Override
+    public List<Problem> getAllProblemFromPersonId(Long id) {
+        return problemRep.findAllById(id);
+    }
 }
 
