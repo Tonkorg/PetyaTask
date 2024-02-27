@@ -54,16 +54,16 @@ public class RestControllerProblemAndPerson {
     @GetMapping("/getFull/person/{personId}")
     public ResponseEntity<?> getFullPersonInfo(@PathVariable Long personId) {
         try {
-            // Получаем информацию о человеке и его проблемах из сервисов
+
             Person person = personService.getPersonById(personId);
             List<Problem> problems = problemService.getAllProblemByPersonId(personId);
 
-            // Создаем объект, содержащий всю информацию
+
             Map<String, Object> fullInfo = new HashMap<>();
             fullInfo.put("person", person);
             fullInfo.put("problems", problems);
 
-            // Возвращаем объект в формате JSON
+
             return ResponseEntity.ok(fullInfo);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error retrieving data: " + e.getMessage());
