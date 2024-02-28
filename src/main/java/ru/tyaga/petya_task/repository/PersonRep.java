@@ -10,4 +10,6 @@ public interface PersonRep extends JpaRepository<Person, Long> {
     void deletePersonByMail(String mail);
 
     Person getPersonByPersonID(Long id);
+
+    Person getPersonByMail(String mail);
 }

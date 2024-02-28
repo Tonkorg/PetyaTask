@@ -28,27 +28,36 @@ public class RestControllerProblemAndPerson {
 
     @PostMapping("/createFull")
     public ResponseEntity<String> processData(@RequestBody ProblemAndPerson problemAndPerson) {
-        try {
-            Person person = new Person();
+        try{
+        Person person = personService.getPersonByMail(problemAndPerson.getMail());
+
+        if (person == null) {
+            // Создаем нового пользователя
+            person = new Person();
             person.setName(problemAndPerson.getName());
             person.setLastName(problemAndPerson.getLastName());
             person.setMidName(problemAndPerson.getMidName());
             person.setDateBT(problemAndPerson.getDateBT());
             person.setMail(problemAndPerson.getMail());
-
             personService.addNewPerson(person);
+        }
 
-            Problem problem = new Problem();
-            //problem.setPerson(person); // Устанавливаем объект Person в Problem
-            problem.setDescription(problemAndPerson.getDescription());
+        // Создаем новую проблему и связываем ее с пользователем
+        Problem problem = new Problem();
+        problem.setPerson(person);
+        problem.setDescription(problemAndPerson.getDescription());
+        problemService.addNewProblem(problem);
 
-            problemService.addNewProblem(problem);
+        // Обновляем пользователя, добавляя проблему в список его проблем
+        person.getProblems().add(problem);
+        personService.updatePerson(person);
 
-            return ResponseEntity.ok("Data processed successfully");
+        return ResponseEntity.ok("Data processed successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing data: " + e.getMessage());
         }
     }
+
 
 
     @GetMapping("/getFull/person/{personId}")

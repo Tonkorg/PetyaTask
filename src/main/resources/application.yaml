@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     database: postgresql
     show-sql: true
     properties:

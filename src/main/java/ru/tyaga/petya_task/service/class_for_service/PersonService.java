@@ -43,5 +43,11 @@ public class PersonService implements PersonSer {
         return personRep.getPersonByPersonID(id);
     }
 
+    public Person getPersonByMail(String mail)
+    {
+        return  personRep.getPersonByMail(mail);
+    }
+
+
 
 }
