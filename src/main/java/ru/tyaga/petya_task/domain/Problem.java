@@ -19,11 +19,12 @@ public class Problem {
     @ManyToOne
     private Person person;
 
+    @Transient
     private LocalDate date;
 
     private String description;
 
     public LocalDate getDate() {
-        return date;
+        return LocalDate.now();
     }
 }
