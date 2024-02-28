@@ -40,7 +40,7 @@ public class PersonService implements PersonSer {
 
     @Override
     public Person getPersonById(Long id) {
-        return personRep.getPersonById(id);
+        return personRep.getPersonByPersonID(id);
     }
 
 

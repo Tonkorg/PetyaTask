@@ -16,13 +16,13 @@ import java.util.Set;
 @NoArgsConstructor
 public class Person {
 
-    @OneToMany(mappedBy="personId")
+    @OneToMany(mappedBy = "person")
     @Cascade(CascadeType.ALL)
     Set<Problem> problems;
 
     @Id
     @GeneratedValue
-    private Long person_id;
+    private Long personID;
 
     private String name;
     private String lastName;
@@ -36,6 +36,6 @@ public class Person {
     private int age;
 
     public int getAge() {
-        return Period.between(dateBT,LocalDate.now()).getYears();
+        return Period.between(dateBT, LocalDate.now()).getYears();
     }
 }

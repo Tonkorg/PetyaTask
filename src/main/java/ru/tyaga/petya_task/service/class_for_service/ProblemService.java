@@ -3,6 +3,7 @@ package ru.tyaga.petya_task.service.class_for_service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.tyaga.petya_task.domain.Person;
 import ru.tyaga.petya_task.domain.Problem;
 import ru.tyaga.petya_task.repository.ProblemRep;
 import ru.tyaga.petya_task.service.interface_of_service.ProblemSer;
@@ -23,7 +24,7 @@ public class ProblemService implements ProblemSer {
 
     @Override
     public Problem getProblemById(Long id) {
-        return problemRep.getProblemById(id);
+        return problemRep.getProblemByProblemId(id);
     }
 
     @Override
@@ -44,10 +45,10 @@ public class ProblemService implements ProblemSer {
     }
 
     @Override
-    public List<Problem> getAllProblemByPersonId(Long personId) {
-
-        return problemRep.getAllByPersonId(personId);
+    public List<Problem> getAllProblemByPerson(Person person) {
+        return problemRep.getAllByPerson(person);
     }
+
 
 
 }

@@ -1,5 +1,6 @@
 package ru.tyaga.petya_task.service.interface_of_service;
 
+import ru.tyaga.petya_task.domain.Person;
 import ru.tyaga.petya_task.domain.Problem;
 
 import java.util.List;
@@ -16,6 +17,6 @@ public interface ProblemSer {
 
    void addNewProblem(Problem problem);
 
-   List<Problem>  getAllProblemByPersonId(Long personId);
+   List<Problem>  getAllProblemByPerson(Person person);
 
 }

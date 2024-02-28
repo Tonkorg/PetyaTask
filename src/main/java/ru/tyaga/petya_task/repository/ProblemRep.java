@@ -1,16 +1,17 @@
 package ru.tyaga.petya_task.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ru.tyaga.petya_task.domain.Person;
 import ru.tyaga.petya_task.domain.Problem;
 
 import java.util.List;
 
-public interface ProblemRep extends JpaRepository<Problem,Integer> {
+public interface ProblemRep extends JpaRepository<Problem,Long> {
 
-    Problem getProblemById(Long id);
+    Problem getProblemByProblemId(Long id);
 
-    void deleteById(Long id);
+    void deleteByProblemId(Long id);
 
 
-    List<Problem> getAllByPersonId(Long personId);
+    List<Problem> getAllByPerson(Person person);
 }

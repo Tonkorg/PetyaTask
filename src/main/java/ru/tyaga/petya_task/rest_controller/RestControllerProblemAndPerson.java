@@ -39,7 +39,7 @@ public class RestControllerProblemAndPerson {
             personService.addNewPerson(person);
 
             Problem problem = new Problem();
-            problem.setPerson(person); // Устанавливаем объект Person в Problem
+            //problem.setPerson(person); // Устанавливаем объект Person в Problem
             problem.setDescription(problemAndPerson.getDescription());
 
             problemService.addNewProblem(problem);
@@ -56,7 +56,7 @@ public class RestControllerProblemAndPerson {
         try {
 
             Person person = personService.getPersonById(personId);
-            List<Problem> problems = problemService.getAllProblemByPersonId(personId);
+            List<Problem> problems = problemService.getAllProblemByPerson(person);
 
 
             Map<String, Object> fullInfo = new HashMap<>();

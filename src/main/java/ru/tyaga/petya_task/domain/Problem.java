@@ -14,19 +14,16 @@ public class Problem {
 
     @Id
     @GeneratedValue
-    private Integer problem_id;
+    private Long problemId;
 
     @ManyToOne
-    @JoinColumn(name="person_id")
     private Person person;
-
-    private Long personId;
 
     private LocalDate date;
 
     private String description;
 
     public LocalDate getDate() {
-        return LocalDate.now();
+        return date;
     }
 }

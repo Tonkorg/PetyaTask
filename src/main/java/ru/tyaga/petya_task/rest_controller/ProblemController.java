@@ -14,6 +14,7 @@ import java.util.List;
 public class ProblemController {
 
     private ProblemService problemService;
+    private PersonService personService;
 
 
 
@@ -45,7 +46,7 @@ public class ProblemController {
     @GetMapping("/getProblemForPerson/{personId}")
     List<Problem> getAllProblemByPersonId(@PathVariable Long personId)
     {
-        return problemService.getAllProblemByPersonId(personId);
+        return problemService.getAllProblemByPerson(personService.getPersonById(personId));
     }
 
 
