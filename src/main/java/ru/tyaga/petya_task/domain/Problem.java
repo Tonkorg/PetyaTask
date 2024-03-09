@@ -16,9 +16,6 @@ public class Problem {
     @GeneratedValue
     private Long problemId;
 
-    @ManyToOne
-    private Person person;
-
     @Transient
     private LocalDate date;
 

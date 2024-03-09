@@ -17,6 +17,6 @@ public interface ProblemSer {
 
    void addNewProblem(Problem problem);
 
-   List<Problem>  getAllProblemByPerson(Person person);
+   //List<Problem>  getAllProblemByPerson(Person person);
 
 }

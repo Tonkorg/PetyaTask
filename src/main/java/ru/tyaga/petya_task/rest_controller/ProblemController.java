@@ -43,11 +43,6 @@ public class ProblemController {
         return  problemService.getProblemById(id);
     }
 
-    @GetMapping("/getProblemForPerson/{personId}")
-    List<Problem> getAllProblemByPersonId(@PathVariable Long personId)
-    {
-        return problemService.getAllProblemByPerson(personService.getPersonById(personId));
-    }
 
 
 }

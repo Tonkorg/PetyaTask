@@ -44,12 +44,5 @@ public class ProblemService implements ProblemSer {
         problemRep.save(problem);
     }
 
-    @Override
-    public List<Problem> getAllProblemByPerson(Person person) {
-        return problemRep.getAllByPerson(person);
-    }
-
-
-
 }
 

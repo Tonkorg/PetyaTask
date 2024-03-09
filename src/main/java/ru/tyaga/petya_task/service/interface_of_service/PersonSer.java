@@ -15,4 +15,5 @@ public interface PersonSer {
     void deletePersonByMail(String mail);
 
     Person getPersonById(Long id);
+    Person getPersonByMail (String mail);
 }

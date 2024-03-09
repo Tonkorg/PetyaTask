@@ -14,6 +14,7 @@ import ru.tyaga.petya_task.service.class_for_service.ProblemService;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -44,38 +45,16 @@ public class RestControllerProblemAndPerson {
 
         // Создаем новую проблему и связываем ее с пользователем
         Problem problem = new Problem();
-        problem.setPerson(person);
         problem.setDescription(problemAndPerson.getDescription());
         problemService.addNewProblem(problem);
 
-        // Обновляем пользователя, добавляя проблему в список его проблем
-        person.getProblems().add(problem);
+
+        person.addProblem(problem);
         personService.updatePerson(person);
 
         return ResponseEntity.ok("Data processed successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing data: " + e.getMessage());
-        }
-    }
-
-
-
-    @GetMapping("/getFull/person/{personId}")
-    public ResponseEntity<?> getFullPersonInfo(@PathVariable Long personId) {
-        try {
-
-            Person person = personService.getPersonById(personId);
-            List<Problem> problems = problemService.getAllProblemByPerson(person);
-
-
-            Map<String, Object> fullInfo = new HashMap<>();
-            fullInfo.put("person", person);
-            fullInfo.put("problems", problems);
-
-
-            return ResponseEntity.ok(fullInfo);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error retrieving data: " + e.getMessage());
         }
     }
 }
@@ -92,3 +71,4 @@ class ProblemAndPerson
     private String mail;
     private String description;
 }
+

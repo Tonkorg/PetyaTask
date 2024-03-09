@@ -1,9 +1,11 @@
 package ru.tyaga.petya_task.service.class_for_service;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
 import ru.tyaga.petya_task.domain.Person;
+import ru.tyaga.petya_task.domain.Problem;
 import ru.tyaga.petya_task.repository.PersonRep;
 import ru.tyaga.petya_task.service.interface_of_service.PersonSer;
 
@@ -12,7 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-
+@Transactional
 public class PersonService implements PersonSer {
 
      private PersonRep personRep;
@@ -43,9 +45,9 @@ public class PersonService implements PersonSer {
         return personRep.getPersonByPersonID(id);
     }
 
-    public Person getPersonByMail(String mail)
-    {
-        return  personRep.getPersonByMail(mail);
+    @Override
+    public Person getPersonByMail(String mail) {
+        return personRep.getPersonByMail(mail);
     }
 
 
