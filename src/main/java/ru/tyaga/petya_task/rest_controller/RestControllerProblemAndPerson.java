@@ -43,16 +43,25 @@ public class RestControllerProblemAndPerson {
             personService.addNewPerson(person);
         }
 
-        // Создаем новую проблему и связываем ее с пользователем
-        Problem problem = new Problem();
-        problem.setDescription(problemAndPerson.getDescription());
-        problemService.addNewProblem(problem);
+          return   createProblemByPerson(problemAndPerson);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing data: " + e.getMessage());
+        }
+    }
+    @PostMapping("/createProblem/{email}")
+    public ResponseEntity<String> createProblemByPerson(@RequestBody ProblemAndPerson problemAndPerson)
+    {
+        try{
+            Person person = personService.getPersonByMail(problemAndPerson.getMail());
 
+            // Создаем новую проблему и связываем ее с пользователем
+            Problem problem = new Problem();
+            problem.setDescription(problemAndPerson.getDescription());
+            problemService.addNewProblem(problem);
+            person.addProblem(problem);
+            personService.updatePerson(person);
 
-        person.addProblem(problem);
-        personService.updatePerson(person);
-
-        return ResponseEntity.ok("Data processed successfully");
+            return ResponseEntity.ok("Data processed successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing data: " + e.getMessage());
         }

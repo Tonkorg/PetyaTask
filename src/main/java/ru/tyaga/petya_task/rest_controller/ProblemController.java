@@ -24,11 +24,12 @@ public class ProblemController {
         return  problemService.getAllProblem();
     }
 
-    @PostMapping("/addProblem")
-    public String addNewProblem(@RequestBody Problem problem) {
-        problemService.addNewProblem(problem);
-        return "Success";
-    }
+//    @PostMapping("/addProblem")
+//    public String addNewProblem(@RequestBody Problem problem) {
+//
+//        problemService.addNewProblem(problem);
+//        return "Success";
+//    }
 
     @PutMapping("/updateProblem")
     public Problem updateProblem(@RequestBody Problem problem) {
